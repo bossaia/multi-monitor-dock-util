@@ -97,10 +97,18 @@ namespace multi_monitor_dock_util
             primarySettings.dmPositionX = secondary.CurrentDisplaySettings.dmPelsWidth;
             secondarySettings.dmPositionX = 0;
 
+            const uint dwFlags = Win32.CDS_UPDATEREGISTRY | Win32.CDS_NORESET;
+            uint leftPrimary = PreferenceSettings.PrimaryMonitor == PreferenceSettings.PrimaryMonitorEnum.LeftSide
+                                   ? Win32.CDS_SET_PRIMARY
+                                   : 0;
+            uint rightPrimary = PreferenceSettings.PrimaryMonitor == PreferenceSettings.PrimaryMonitorEnum.RightSide
+                                   ? Win32.CDS_SET_PRIMARY
+                                   : 0;
+
             Win32.ChangeDisplaySettingsEx(primary.Device.DeviceName, ref primarySettings, (IntPtr)null,
-                                          Win32.CDS_UPDATEREGISTRY | Win32.CDS_NORESET, (IntPtr)null);
+                                          dwFlags | rightPrimary, (IntPtr)null);
             Win32.ChangeDisplaySettingsEx(secondary.Device.DeviceName, ref secondarySettings, (IntPtr)null,
-                                          Win32.CDS_UPDATEREGISTRY | Win32.CDS_SET_PRIMARY | Win32.CDS_NORESET,
+                                          dwFlags | leftPrimary,
                                           (IntPtr)null);
             Win32.ChangeDisplaySettingsEx(null, null, (IntPtr)null, 0, (IntPtr)null);
         }

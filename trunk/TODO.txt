@@ -1,3 +1,2 @@
-﻿* Preference for primary monitor being on the left or right.
-* Resolution selector.
+﻿* Resolution selector.
 * Try to check if monitors are correct automatically.
