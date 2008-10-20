@@ -45,6 +45,7 @@ namespace multi_monitor_dock_util
         public Main()
         {
             InitializeComponent();
+
             EnumerateMonitors();
         }
 
@@ -130,11 +131,6 @@ namespace multi_monitor_dock_util
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
         }
 
-        private void DebugButton_Click(object sender, EventArgs e)
-        {
-            DebugText.Visible = !DebugText.Visible;
-        }
-
         private void YesButton_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -171,6 +167,23 @@ namespace multi_monitor_dock_util
         {
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var preferencesDlg = new Preferences();
+            preferencesDlg.ShowDialog();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DebugText.Visible = !DebugText.Visible;
+            MenuItemShowDebug.Text = DebugText.Visible ? "Hide Debug Info" : "Show Debug Info";
         }
     }
 }
