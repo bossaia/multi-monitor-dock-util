@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using Microsoft.Win32;
 
 namespace multi_monitor_dock_util
@@ -17,6 +16,7 @@ namespace multi_monitor_dock_util
         private const string RegValPrimaryMonitor = "PrimaryMonitor";
         private const string RegValAutoStart = "AutoStart";
         private const string RegValAutoRun = "MultiMonitorDockUtil";
+        private const string RegValMinimizeOnStart = "MinimizeOnStart";
 
         public static PrimaryMonitorEnum PrimaryMonitor
         {
@@ -49,6 +49,20 @@ namespace multi_monitor_dock_util
                     key.SetValue(RegValAutoRun, Environment.GetCommandLineArgs()[0], RegistryValueKind.String);
                 else
                     key.DeleteValue(RegValAutoRun, false);
+            }
+        }
+
+        public static bool MinimizeOnStart
+        {
+            get
+            {
+                RegistryKey key = GetApplicationRegistryKey();
+                return Convert.ToBoolean(key.GetValue(RegValMinimizeOnStart, false));
+            }
+            set
+            {
+                RegistryKey key = GetApplicationRegistryKey();
+                key.SetValue(RegValMinimizeOnStart, value, RegistryValueKind.DWord);
             }
         }
 

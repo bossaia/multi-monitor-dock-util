@@ -14,11 +14,13 @@ namespace multi_monitor_dock_util
             PrimaryMonitorRight.Checked = PreferenceSettings.PrimaryMonitor ==
                                           PreferenceSettings.PrimaryMonitorEnum.RightSide;
             AutoStartCheckbox.Checked = PreferenceSettings.AutostartOnSystemStartup;
+            MinimizeOnStartCheckbox.Checked = PreferenceSettings.MinimizeOnStart;
         }
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
             PreferenceSettings.AutostartOnSystemStartup = AutoStartCheckbox.Checked;
+            PreferenceSettings.MinimizeOnStart = MinimizeOnStartCheckbox.Checked;
             PreferenceSettings.PrimaryMonitor = PrimaryMonitorLeft.Checked
                                                     ? PreferenceSettings.PrimaryMonitorEnum.LeftSide
                                                     : PreferenceSettings.PrimaryMonitorEnum.RightSide;

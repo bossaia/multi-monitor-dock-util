@@ -204,9 +204,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.ShowInTaskbar = false;
             this.Text = "Multi-Monitor Dock Utility";
-            this.Load += new System.EventHandler(this.Main_Load);
-            this.Resize += new System.EventHandler(this.Main_Resize);
+            this.Load += new System.EventHandler(this.Main_Load);;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.systemTrayContextMenu.ResumeLayout(false);

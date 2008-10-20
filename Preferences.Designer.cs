@@ -34,12 +34,13 @@
             this.PrimaryMonitorRight = new System.Windows.Forms.RadioButton();
             this.PrimaryMonitorLeft = new System.Windows.Forms.RadioButton();
             this.AutoStartCheckbox = new System.Windows.Forms.CheckBox();
+            this.MinimizeOnStartCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OKBtn
             // 
-            this.OKBtn.Location = new System.Drawing.Point(47, 107);
+            this.OKBtn.Location = new System.Drawing.Point(47, 149);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(75, 23);
             this.OKBtn.TabIndex = 0;
@@ -50,7 +51,7 @@
             // CancelBtn
             // 
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(128, 107);
+            this.CancelBtn.Location = new System.Drawing.Point(128, 149);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
             this.CancelBtn.TabIndex = 1;
@@ -93,12 +94,22 @@
             // AutoStartCheckbox
             // 
             this.AutoStartCheckbox.AutoSize = true;
-            this.AutoStartCheckbox.Location = new System.Drawing.Point(21, 69);
+            this.AutoStartCheckbox.Location = new System.Drawing.Point(29, 72);
             this.AutoStartCheckbox.Name = "AutoStartCheckbox";
             this.AutoStartCheckbox.Size = new System.Drawing.Size(153, 17);
             this.AutoStartCheckbox.TabIndex = 7;
             this.AutoStartCheckbox.Text = "Autostart on system startup";
             this.AutoStartCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // MinimizeOnStartCheckbox
+            // 
+            this.MinimizeOnStartCheckbox.AutoSize = true;
+            this.MinimizeOnStartCheckbox.Location = new System.Drawing.Point(29, 95);
+            this.MinimizeOnStartCheckbox.Name = "MinimizeOnStartCheckbox";
+            this.MinimizeOnStartCheckbox.Size = new System.Drawing.Size(104, 17);
+            this.MinimizeOnStartCheckbox.TabIndex = 8;
+            this.MinimizeOnStartCheckbox.Text = "Minimize on start";
+            this.MinimizeOnStartCheckbox.UseVisualStyleBackColor = true;
             // 
             // Preferences
             // 
@@ -106,7 +117,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(215, 142);
+            this.ClientSize = new System.Drawing.Size(215, 184);
+            this.Controls.Add(this.MinimizeOnStartCheckbox);
             this.Controls.Add(this.AutoStartCheckbox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CancelBtn);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.RadioButton PrimaryMonitorRight;
         private System.Windows.Forms.RadioButton PrimaryMonitorLeft;
         private System.Windows.Forms.CheckBox AutoStartCheckbox;
+        private System.Windows.Forms.CheckBox MinimizeOnStartCheckbox;
     }
 }
