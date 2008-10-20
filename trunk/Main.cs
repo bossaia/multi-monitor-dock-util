@@ -121,7 +121,6 @@ namespace multi_monitor_dock_util
 
         private void OnDisplaySettingsChanged(object sender, EventArgs e)
         {
-            Show();
             WindowState = FormWindowState.Normal;
         }
 
@@ -129,6 +128,11 @@ namespace multi_monitor_dock_util
         private void Main_Load(object sender, EventArgs e)
         {
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
+
+            if (PreferenceSettings.MinimizeOnStart)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
         }
 
         private void YesButton_Click(object sender, EventArgs e)
@@ -145,16 +149,8 @@ namespace multi_monitor_dock_util
             EnumerateMonitors();
         }
 
-
-        private void Main_Resize(object sender, EventArgs e)
-        {
-            if (FormWindowState.Minimized == WindowState)
-                Hide();
-        }
-
         private void systemTrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Show();
             WindowState = FormWindowState.Normal;
         }
 
@@ -165,7 +161,6 @@ namespace multi_monitor_dock_util
 
         private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Show();
             WindowState = FormWindowState.Normal;
         }
 
