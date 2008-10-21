@@ -118,50 +118,22 @@ namespace multi_monitor_dock_util
             Display.SwapMonitors(_Monitors[0], _Monitors[1]);
 
         }
-
-        private void OnDisplaySettingsChanged(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Normal;
-        }
-
-
+        
         private void Main_Load(object sender, EventArgs e)
         {
-            Microsoft.Win32.SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
-
-            if (PreferenceSettings.MinimizeOnStart)
-            {
-                WindowState = FormWindowState.Minimized;
-            }
+            
         }
 
         private void YesButton_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            Close();
         }
 
         private void NoButton_Click(object sender, EventArgs e)
         {
             EnumerateMonitors();
             SwapMonitors();
-
-            /* Refresh our settings */
             EnumerateMonitors();
-        }
-
-        private void systemTrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            WindowState = FormWindowState.Normal;
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Normal;
         }
 
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -179,6 +151,12 @@ namespace multi_monitor_dock_util
         {
             DebugText.Visible = !DebugText.Visible;
             MenuItemShowDebug.Text = DebugText.Visible ? "Hide Debug Info" : "Show Debug Info";
+        }
+
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                Close();
         }
     }
 }
