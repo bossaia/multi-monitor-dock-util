@@ -82,14 +82,15 @@ namespace multi_monitor_dock_util
             try
             {
                 _MainForm = new Main();
-                _MainForm.ShowDialog();
-                _MainForm.Close();
-                _MainForm = null;
             }
             finally
             {
                 Monitor.Exit(_SyncRoot);
             }
+
+            _MainForm.ShowDialog();
+            _MainForm.Close();
+            _MainForm = null;
         }
 
         #region Event Handlers
